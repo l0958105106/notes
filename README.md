@@ -101,3 +101,37 @@ anotherDog() // undefined
 [彻底理解js中this的指向，不必硬背](https://www.cnblogs.com/pssp/p/5216085.html)  
 [JavaScript 了解 this 與 new 函式](http://skyroxas.tw/javascript%E4%BA%86%E8%A7%A3-%E8%88%87-new-%E5%87%BD%E5%BC%8F/)  
 [淺談 JavaScript 頭號難題 this：絕對不完整，但保證好懂](https://blog.techbridge.cc/2019/02/23/javascript-this/)  
+
+## 同步非同步
+
+```javascript
+//知名大雜燴面試題，問輸出順序
+async function async1() {
+        console.log("async1 start");
+        await  async2();
+        console.log("async1 end");
+}
+        
+async  function async2() {
+   console.log( 'async2');
+}
+
+console.log("script start");
+
+setTimeout(function () {
+    console.log("settimeout");
+},0);
+
+async1();
+
+new Promise(function (resolve) {
+    console.log("promise1");
+    resolve();
+}).then(function () {
+    console.log("promise2");
+});
+
+console.log('script end');
+
+```
+
